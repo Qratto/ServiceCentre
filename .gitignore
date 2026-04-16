@@ -1,0 +1,5 @@
+backend/venv/
+backend/.gitignore
+backend/.idea/
+backend/__pycache__/
+backend/.env
