@@ -6,7 +6,7 @@ from app.database import Base
 class Shift(Base):
     __tablename__ = "shift"
 
-    id_shift = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True)
     title = Column(String(255), nullable=False)
     duration = Column(Time, nullable=False)
 

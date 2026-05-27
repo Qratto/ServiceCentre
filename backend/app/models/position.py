@@ -6,7 +6,7 @@ from app.database import Base
 class Position(Base):
     __tablename__ = "positions"
 
-    id_positions = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True)
     name = Column(String(255), nullable=False)
     payment_ration = Column(Float, nullable=False)
 

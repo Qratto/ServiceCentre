@@ -7,9 +7,9 @@ from app.database import Base
 class Order(Base):
     __tablename__ = "order"
 
-    id_order = Column(Integer, primary_key=True)
-    id_client = Column(Integer, ForeignKey("client.id_client"), nullable=False)
-    id_employee = Column(Integer, ForeignKey("employee.id_employee"), nullable=False)
+    id = Column(Integer, primary_key=True)
+    id_client = Column(Integer, ForeignKey("client.id"), nullable=False)
+    id_employee = Column(Integer, ForeignKey("employee.id"), nullable=False)
     registration_date = Column(DateTime(timezone=True), nullable=False, server_default=func.now())
     price = Column(Numeric(10, 2), nullable=False)
     status = Column(String(100), nullable=False)
