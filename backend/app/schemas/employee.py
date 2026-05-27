@@ -8,11 +8,15 @@ class EmployeeCreate(BaseModel):
     role: str
 
 class EmployeeResponse(EmployeeCreate):
-    id_employee: int
+    id: int
 
 class EmployeeEdit(BaseModel):
-    first_name: str | None
-    last_name: str | None
-    middle_name: str | None
-    phone: str | None
-    role: str | None
+    first_name: str | None = None
+    last_name: str | None = None
+    middle_name: str | None = None
+    phone: str | None = None
+    role: str | None = None
+
+class EmployeeAccount(BaseModel):
+    username: str
+    password_hash: str
