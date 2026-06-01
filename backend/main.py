@@ -9,6 +9,7 @@ from app.models import *
 from app.endpoints.employee import employee_router
 from app.endpoints.shift import shift_router
 from app.endpoints.auth import auth_router
+from app.endpoints.service import service_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -28,6 +29,7 @@ app = FastAPI(lifespan=lifespan)
 app.include_router(employee_router)
 app.include_router(shift_router)
 app.include_router(auth_router)
+app.include_router(service_router)
 
 @app.get("/")
 def root():

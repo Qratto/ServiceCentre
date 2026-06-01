@@ -1,11 +1,8 @@
 from fastapi import HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
-# from sqlalchemy.orm.sync import update
 from sqlalchemy import update
-
 from app.database import Base
-from app.models import Employee
 
 
 class BaseRepository:
@@ -35,9 +32,9 @@ class BaseRepository:
         record = await self.find_by(id)
         if not record:
             raise HTTPException(status_code=404, detail="Not found")
-        db_data = data.model_dump()
-        db_data["id_employee"] = id
-        await self.session.execute(update(Employee),[db_data])
+        db_data = data.model_dump(exclude_unset=True)
+        db_data["id"] = id
+        await self.session.execute(update(self.model),[db_data])
         await self.session.commit()
         return await self.find_by(id)
 

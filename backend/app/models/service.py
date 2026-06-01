@@ -8,7 +8,7 @@ class Service(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(255), nullable=False)
-    description = Column(Text, nullable=True)
+    description = Column(Text, nullable=False)
     price = Column(Numeric(10, 2), nullable=False)
 
     completed_services = relationship("CompletedService", back_populates="service")
