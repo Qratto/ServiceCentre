@@ -22,21 +22,21 @@ async def get_shift(id: int, session: AsyncSession = Depends(get_db)):
     return shift
 
 @shift_router.post("/", response_model=ShiftResponse)
-async def post_employee(shift_data: ShiftCreate, session: AsyncSession = Depends(get_db)):
+async def post_shift(shift_data: ShiftCreate, session: AsyncSession = Depends(get_db)):
     base_repository = BaseRepository(Shift, session)
     shift = await base_repository.create(shift_data)
     return shift
 
 
 @shift_router.patch("/", response_model=ShiftResponse)
-async def edit_employee(shift_data: ShiftEdit, id: int, session: AsyncSession = Depends(get_db)):
+async def edit_shift(shift_data: ShiftEdit, id: int, session: AsyncSession = Depends(get_db)):
     base_repository = BaseRepository(Shift, session)
-    employee = await base_repository.edit(shift_data, id)
-    return employee
+    shift = await base_repository.edit(shift_data, id)
+    return shift
 
 
 @shift_router.delete("/{id}")
-async def delete_employee(id: int, session: AsyncSession = Depends(get_db)):
+async def delete_shift(id: int, session: AsyncSession = Depends(get_db)):
     base_repository = BaseRepository(Shift, session)
     result = await base_repository.delete(id)
     return result

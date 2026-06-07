@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
 
+from app.endpoints.client import client_router
 from seed_database import seed_database
 from starlette.responses import RedirectResponse
 
@@ -30,6 +31,7 @@ app.include_router(employee_router)
 app.include_router(shift_router)
 app.include_router(auth_router)
 app.include_router(service_router)
+app.include_router(client_router)
 
 @app.get("/")
 def root():

@@ -29,14 +29,14 @@ async def post_service(service_data: ServiceCreate, session: AsyncSession = Depe
 
 
 @service_router.patch("/", response_model=ServiceResponse)
-async def edit_shift(service_data: ServiceEdit, id: int, session: AsyncSession = Depends(get_db)):
+async def edit_service(service_data: ServiceEdit, id: int, session: AsyncSession = Depends(get_db)):
     base_repository = BaseRepository(Service, session)
     service = await base_repository.edit(service_data, id)
     return service
 
 
 @service_router.delete("/{id}")
-async def delete_shift(id: int, session: AsyncSession = Depends(get_db)):
+async def delete_service(id: int, session: AsyncSession = Depends(get_db)):
     base_repository = BaseRepository(Service, session)
     result = await base_repository.delete(id)
     return result
